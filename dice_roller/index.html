@@ -15,9 +15,67 @@
         height: 100vh;
         box-sizing: border-box;
       }
+
+      .dice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+
+      .title {
+        font-size: 2em;
+      }
+
+      #result {
+        width: 400px;
+        height: 200px;
+        margin-top: 2em;
+        margin-bottom: 2em;
+        border: 1px #757575 solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+      }
+
+      .btn {
+        padding: 1em;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        background-color: #1c80cf;
+        color: white;
+        border-style: none;
+        border-radius: 1em;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
-    Hello World
+    <section class="dice">
+      <article class="title">Click the button to roll the dice</article>
+      <article id="result"></article>
+      <button class="btn">Click Me</button>
+    </section>
+
+    <script>
+      function init() {
+        const button = document.querySelector("button");
+
+        button.addEventListener("click", () => {
+          rollDice();
+        });
+      }
+
+      function rollDice() {
+        const randomNum = Math.floor(Math.random() * 6) + 1;
+        const result = document.querySelector("#result");
+        result.innerHTML = `You rolled ${randomNum}!!! 🎲`;
+      }
+
+      init();
+    </script>
   </body>
 </html>
