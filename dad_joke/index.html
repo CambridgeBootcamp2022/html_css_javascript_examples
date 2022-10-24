@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dad Jokes</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+      body {
+        font-family: "Roboto", serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 2em;
+      }
+
+      .joke {
+        font-size: 1.5em;
+        padding-bottom: 2em;
+      }
+
+      .btn {
+        padding: 1em;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        background-color: #1c80cf;
+        color: white;
+        border-style: none;
+        border-radius: 1em;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="main">
+      <article class="joke"></article>
+      <button class="btn">Get Another Joke</button>
+    </section>
+    <script>
+      function init() {
+        dadJoke();
+
+        const btn = document.querySelector(".btn");
+        btn.addEventListener("click", () => {
+          dadJoke();
+        });
+      }
+
+      function dadJoke() {
+        fetch("https://icanhazdadjoke.com", {
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const joke = document.querySelector(".joke");
+            joke.innerHTML = data.joke;
+          });
+      }
+
+      init();
+    </script>
+  </body>
+</html>
