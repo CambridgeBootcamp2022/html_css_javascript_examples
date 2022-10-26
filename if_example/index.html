@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>If Example</title>
+  </head>
+  <body>
+    <div id="msg" style="display: none">Hello World</div>
+
+    <script>
+      const data = {
+        showMessage: true,
+        hasBackground: true,
+        userType: "user",
+      };
+
+      // const msg = document.getElementById("msg");
+      const msg = document.querySelector("#msg");
+
+      if (data.showMessage) {
+        msg.style = "display: block";
+
+        if (data.hasBackground) {
+          if (data.userType === "developer") {
+            msg.style = "background-color: skyblue";
+          } else if (data.userType === "qa") {
+            msg.style = "background-color: teal; color: white";
+          } else if (data.userType === "admin") {
+            msg.style = "background-color: indigo; color: white";
+          } else {
+            msg.style = "background-color: black; color: white";
+          }
+        }
+
+        msg.addEventListener("click", function () {
+          console.log("Howdy All!");
+        });
+
+        // msg.onclick = function () {
+        //   console.log("Hi All!");
+        // };
+      }
+    </script>
+  </body>
+</html>
